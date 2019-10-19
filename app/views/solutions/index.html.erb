@@ -25,7 +25,7 @@
         <td><%= solution.after_de %></td>
         <td><%= solution.vf_case.name %></td>
         <td><%= solution.description %></td>
-        <td><%= User.find(solution.created_by_id).email %></td>
+        <td><%= User.find(solution.created_by_id).name %></td>
         <td><%= link_to 'Show', solution %></td>
         <% unless current_user.member? %>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
@@ -37,6 +37,7 @@
 </table>
 
 <br>
+<p><%= link_to 'Cases', vf_cases_path %></p>
 <% unless current_user.member? %>
   <%= link_to 'New Solution', new_solution_path %>
 <% end %>
