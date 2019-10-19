@@ -1,5 +1,6 @@
 class VfCasesController < ApplicationController
   before_action :set_vf_case, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
 
   # GET /vf_cases
   # GET /vf_cases.json

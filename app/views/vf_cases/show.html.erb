@@ -30,10 +30,15 @@
   <%= @vf_case.tctype.name %>
 </p>
 
-<p>
-  <strong>Solutions:</strong>
-  <%= @vf_case.solution_ids %>
-</p>
+<strong>Solutions:</strong>
+<% @vf_case.solutions.each do |s| %>
+  <p><%= s.description %></p>
+  <p><%= s.before_en %></p>
+  <p><%= s.after_en %></p>
+  <p><%= s.before_de %></p>
+  <p><%= s.after_de %></p>
+  <hr>
+<% end %>
 
 <%= link_to 'Edit', edit_vf_case_path(@vf_case) %> |
 <%= link_to 'Back', vf_cases_path %>

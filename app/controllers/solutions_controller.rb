@@ -1,5 +1,6 @@
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
 
   # GET /solutions
   # GET /solutions.json
@@ -25,7 +26,7 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(solution_params)
-
+    @solution.created_by_id = current_user.id
     respond_to do |format|
       if @solution.save
         format.html { redirect_to @solution, notice: 'Solution was successfully created.' }

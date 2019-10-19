@@ -11,6 +11,7 @@
       <th>After de</th>
       <th>Vf case</th>
       <th>Description</th>
+      <th>Created By</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= solution.after_de %></td>
         <td><%= solution.vf_case.name %></td>
         <td><%= solution.description %></td>
+        <td><%= User.find(solution.created_by_id).email %></td>
         <td><%= link_to 'Show', solution %></td>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
         <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
