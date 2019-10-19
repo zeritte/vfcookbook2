@@ -27,13 +27,16 @@
         <td><%= solution.description %></td>
         <td><%= User.find(solution.created_by_id).email %></td>
         <td><%= link_to 'Show', solution %></td>
+        <% unless current_user.member? %>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
         <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Solution', new_solution_path %>
+<% unless current_user.member? %>
+  <%= link_to 'New Solution', new_solution_path %>
+<% end %>

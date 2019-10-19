@@ -27,17 +27,19 @@
         <td><%= vf_case.tctype.name %></td>
         <td><%= vf_case.solutions.count %></td>
         <td><%= link_to 'Show', vf_case %></td>
-        <td><%= link_to 'Edit', edit_vf_case_path(vf_case) %></td>
-        <td><%= link_to 'Destroy', vf_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Edit', edit_vf_case_path(vf_case) %></td>
+          <td><%= link_to 'Destroy', vf_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Vf Case', new_vf_case_path %>
-
+<% if current_user.admin? %>
+  <%= link_to 'New Vf Case', new_vf_case_path %>
+<% end %>
 <% if user_signed_in? %>
 <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% else %>
