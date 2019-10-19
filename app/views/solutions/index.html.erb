@@ -27,7 +27,7 @@
         <td><%= solution.description %></td>
         <td><%= User.find(solution.created_by_id).name %></td>
         <td><%= link_to 'Show', solution %></td>
-        <% unless current_user.member? %>
+        <% unless current_user && current_user.member? %>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
         <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -38,6 +38,6 @@
 
 <br>
 <p><%= link_to 'Cases', vf_cases_path %></p>
-<% unless current_user.member? %>
+<% unless current_user && current_user.member? %>
   <%= link_to 'New Solution', new_solution_path %>
 <% end %>

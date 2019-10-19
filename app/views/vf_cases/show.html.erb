@@ -40,7 +40,7 @@
   <hr>
 <% end %>
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
   <%= link_to 'Edit', edit_vf_case_path(@vf_case) %> |
 <% end %>
 <%= link_to 'Back', vf_cases_path %>

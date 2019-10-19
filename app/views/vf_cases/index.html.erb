@@ -27,7 +27,7 @@
         <td><%= vf_case.tctype.name %></td>
         <td><%= vf_case.solutions.count %></td>
         <td><%= link_to 'Show', vf_case %></td>
-        <% if current_user.admin? %>
+        <% if current_user && current_user.admin? %>
           <td><%= link_to 'Edit', edit_vf_case_path(vf_case) %></td>
           <td><%= link_to 'Destroy', vf_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -37,7 +37,7 @@
 </table>
 
 <br>
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
   <%= link_to 'New Vf Case', new_vf_case_path %>
 <% end %>
 <p><%= link_to 'Solutions', solutions_path %></p>
