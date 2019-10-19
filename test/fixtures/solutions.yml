@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  before_en: MyString
+  after_en: MyString
+  before_de: MyString
+  after_de: MyString
+  vf_case: one
+  description: MyString
+
+two:
+  before_en: MyString
+  after_en: MyString
+  before_de: MyString
+  after_de: MyString
+  vf_case: two
+  description: MyString

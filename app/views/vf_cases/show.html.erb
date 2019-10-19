@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vf_case.name %>
+</p>
+
+<p>
+  <strong>Case class:</strong>
+  <%= @vf_case.case_class %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @vf_case.is_active %>
+</p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @vf_case.domain.name %>
+</p>
+
+<p>
+  <strong>Impact:</strong>
+  <%= @vf_case.impact.name %>
+</p>
+
+<p>
+  <strong>Tctype:</strong>
+  <%= @vf_case.tctype.name %>
+</p>
+
+<p>
+  <strong>Solutions:</strong>
+  <%= @vf_case.solution_ids %>
+</p>
+
+<%= link_to 'Edit', edit_vf_case_path(@vf_case) %> |
+<%= link_to 'Back', vf_cases_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  case_class: MyString
+  is_active: false
+  domain: one
+  impact: one
+  tctype: one
+
+two:
+  name: MyString
+  case_class: MyString
+  is_active: false
+  domain: two
+  impact: two
+  tctype: two

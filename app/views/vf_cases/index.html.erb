@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vf Cases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Case class</th>
+      <th>Is active</th>
+      <th>Domain</th>
+      <th>Impact</th>
+      <th>Tctype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vf_cases.each do |vf_case| %>
+      <tr>
+        <td><%= vf_case.name %></td>
+        <td><%= vf_case.case_class %></td>
+        <td><%= vf_case.is_active %></td>
+        <td><%= vf_case.domain.name %></td>
+        <td><%= vf_case.impact.name %></td>
+        <td><%= vf_case.tctype.name %></td>
+        <td><%= link_to 'Show', vf_case %></td>
+        <td><%= link_to 'Edit', edit_vf_case_path(vf_case) %></td>
+        <td><%= link_to 'Destroy', vf_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vf Case', new_vf_case_path %>

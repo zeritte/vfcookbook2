@@ -1,0 +1,47 @@
+<%= form_with(model: vf_case, local: true) do |form| %>
+  <% if vf_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vf_case.errors.count, "error") %> prohibited this vf_case from being saved:</h2>
+
+      <ul>
+      <% vf_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :case_class %>
+    <%= form.text_field :case_class %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_active %>
+    <%= form.check_box :is_active %>
+  </div>
+
+  <div class="field">
+    <%= form.label :domain_id %>
+    <%= form.collection_select :domain_id, Domain.order(:name),:id,:name, include_blank: false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :impact_id %>
+    <%= form.collection_select :impact_id, Impact.order(:name),:id,:name, include_blank: false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tctype_id %>
+    <%= form.collection_select :tctype_id, Tctype.order(:name),:id,:name, include_blank: false %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

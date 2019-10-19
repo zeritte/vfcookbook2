@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Before en:</strong>
+  <%= @solution.before_en %>
+</p>
+
+<p>
+  <strong>After en:</strong>
+  <%= @solution.after_en %>
+</p>
+
+<p>
+  <strong>Before de:</strong>
+  <%= @solution.before_de %>
+</p>
+
+<p>
+  <strong>After de:</strong>
+  <%= @solution.after_de %>
+</p>
+
+<p>
+  <strong>Vf case:</strong>
+  <%= @solution.vf_case.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @solution.description %>
+</p>
+
+<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<%= link_to 'Back', solutions_path %>
