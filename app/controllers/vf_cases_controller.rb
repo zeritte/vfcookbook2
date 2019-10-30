@@ -55,10 +55,16 @@ class VfCasesController < ApplicationController
   # DELETE /vf_cases/1
   # DELETE /vf_cases/1.json
   def destroy
-    @vf_case.destroy
-    respond_to do |format|
-      format.html { redirect_to vf_cases_url, notice: 'Vf case was successfully destroyed.' }
-      format.json { head :no_content }
+    if (@vf_case.destroy)
+      respond_to do |format|
+        format.html { redirect_to vf_cases_url, notice: 'Vf case was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to vf_cases_url, notice: 'Vf case was not successfully destroyed.' }
+        format.json { render json: @vf_case.errors, status: :unprocessable_entity }
+      end
     end
   end
 
