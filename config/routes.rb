@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root to: 'vf_cases#index'
   namespace :api do
     resources :sessions, only: [:create]
+    resources :registrations, only: [:create]
   end
 end
