@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :users
   resources :solutions
   resources :vf_cases
-  root to: "vf_cases#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'vf_cases#index'
+  namespace :api do
+    resources :sessions, only: [:create]
+  end
 end
