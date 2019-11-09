@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create]
     resources :registrations, only: [:create]
   end
+  get 'waiting_list', to: 'solutions#waiting_list'
 end
