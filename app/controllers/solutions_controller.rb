@@ -26,7 +26,6 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(solution_params)
-    @solution.created_by_id = current_user.id
     unless current_user.member?
       @solution.is_approved = true
     end
@@ -44,7 +43,7 @@ class SolutionsController < ApplicationController
   # PATCH/PUT /solutions/1
   # PATCH/PUT /solutions/1.json
   def update
-    if @solution.user.id != current_user.id && current_user.member?
+    if @solution.created_by.id != current_user.id && current_user.member?
       format.html { redirect_to @solution, notice: 'You can only edit your own solution' }
     end
     unless current_user.member?
@@ -83,6 +82,6 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :description, :is_approved)
+      params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :description, :is_approved).merge!(created_by_id: current_user.id)
     end
 end

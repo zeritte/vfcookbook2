@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :solutions, class_name: 'Solution', foreign_key: :created_by_id
+
   enum role: [:member, :editor, :admin]
 
 
