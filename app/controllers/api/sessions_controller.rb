@@ -1,5 +1,4 @@
 class Api::SessionsController < Api::BaseController
-  skip_before_action :authenticate_user!
   def create
     user = User.find_by_email(session_params[:email])
     if user&.valid_password?(session_params[:password])
@@ -11,6 +10,6 @@ class Api::SessionsController < Api::BaseController
 
   private
   def session_params
-    params.permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end

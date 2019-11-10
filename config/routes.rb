@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :sessions, only: [:create]
     resources :registrations, only: [:create]
+    resources :solutions, only: [:index, :show, :create, :update, :destroy]
+    get 'waiting_list', to: 'solutions#waiting_list'
   end
-  get 'waiting_list', to: 'solutions#waiting_list'
 end

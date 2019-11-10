@@ -1,5 +1,4 @@
 class Api::RegistrationsController < Api::BaseController
-  skip_before_action :authenticate_user!
   def create
     user = User.new(sign_up_params)
     if user.errors.full_messages.empty? && user.save
@@ -12,6 +11,6 @@ class Api::RegistrationsController < Api::BaseController
   private
 
   def sign_up_params
-    params.permit(:email, :password, :name)
+    params.require(:user).permit(:email, :password, :name)
   end
 end
