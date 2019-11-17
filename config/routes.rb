@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create]
     resources :registrations, only: [:create]
     resources :solutions, only: [:index, :show, :create, :update, :destroy]
+    resources :vf_cases, only: [:index, :show, :create, :update, :destroy]
+    get 'vf_cases_all', to: 'vf_cases#dashboard'
     get 'waiting_list', to: 'solutions#waiting_list'
   end
 end

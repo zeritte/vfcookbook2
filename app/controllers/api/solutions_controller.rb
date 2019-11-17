@@ -1,9 +1,9 @@
 class Api::SolutionsController < Api::BaseController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
+  before_action :set_current_user, only: [:index]
 
   def index
-    current_user = User.where(authentication_token: request.headers['token']).first
     if current_user
       @solutions = Solution.all.where(is_approved: true).or(Solution.where(created_by_id: current_user.id))
       render json: @solutions
