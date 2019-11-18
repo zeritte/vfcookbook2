@@ -63,6 +63,6 @@ class Api::SolutionsController < Api::BaseController
   end
 
   def solution_params
-    params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :description, :is_approved)
+    params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :is_approved, :footnote_en, :footnote_de)
   end
 end

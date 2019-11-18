@@ -80,6 +80,6 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :description, :is_approved)
+      params.require(:solution).permit(:before_en, :after_en, :before_de, :after_de, :vf_case_id, :documentation, :is_approved)
     end
 end

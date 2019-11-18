@@ -36,11 +36,6 @@
     <%= form.collection_select :vf_case_id, VfCase.order(:name),:id,:name, include_blank: false %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

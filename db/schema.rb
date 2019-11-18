@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_224002) do
+ActiveRecord::Schema.define(version: 2019_11_18_083515) do
 
   create_table "domains", force: :cascade do |t|
     t.string "name"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 2019_11_09_224002) do
     t.string "before_de"
     t.string "after_de"
     t.integer "vf_case_id"
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "created_by_id"
     t.boolean "is_approved", default: false
+    t.string "footnote_en"
+    t.string "footnote_de"
     t.index ["vf_case_id"], name: "index_solutions_on_vf_case_id"
   end
 
@@ -72,6 +73,10 @@ ActiveRecord::Schema.define(version: 2019_11_09_224002) do
     t.integer "tctype_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "documentation"
+    t.string "content_en"
+    t.string "content_de"
+    t.text "case_id", null: false
     t.index ["domain_id"], name: "index_vf_cases_on_domain_id"
     t.index ["impact_id"], name: "index_vf_cases_on_impact_id"
     t.index ["tctype_id"], name: "index_vf_cases_on_tctype_id"
