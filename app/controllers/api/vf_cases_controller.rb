@@ -3,7 +3,7 @@ class Api::VfCasesController < Api::BaseController
   before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
 
   def index
-    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.all, serializer: VfCaseListSerializer)
+    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.where(is_active:true), serializer: VfCaseListSerializer)
   end
 
   def show
@@ -11,12 +11,12 @@ class Api::VfCasesController < Api::BaseController
   end
 
    def create
-    @vf_case = Solution.new(solution_params)
+    @vf_case = VfCase.new(vf_case_params)
     if current_user.member?
       render json: { message: 'Members can not create or update cases.' }, status: 401
       return
     end
-    if @solution.save
+    if @vf_case.save
       render json: { message: 'Successfully created.' }
     else
       render json: { message: @vf_case.errors.full_messages }, status: 400
