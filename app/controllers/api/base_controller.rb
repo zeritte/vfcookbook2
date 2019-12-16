@@ -16,9 +16,6 @@ class Api::BaseController < ApplicationController
     if !@current_user
       render json: { message: 'Unauthorized.' }, status: 404
       return
-    elsif !@current_user.confirmed?
-      render json: { message: 'Account has not confirmed.' }, status: 401
-      return
     end
   end
 

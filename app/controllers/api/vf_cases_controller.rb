@@ -1,9 +1,10 @@
 class Api::VfCasesController < Api::BaseController
   before_action :set_vf_case, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
+  before_action :set_current_user, only: [:create, :update]
 
   def index
-    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.where(is_active:true), serializer: VfCaseListSerializer)
+    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.where(is_active: true), serializer: VfCaseListSerializer)
   end
 
   def show

@@ -1,7 +1,7 @@
 class Api::SolutionsController < Api::BaseController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
-  before_action :set_current_user, only: [:index]
+  before_action :set_current_user, only: [:index, :create, :update]
 
   def index
     if current_user
@@ -23,7 +23,11 @@ class Api::SolutionsController < Api::BaseController
       @solution.is_approved = true
     end
     if @solution.save
-      render json: { message: 'Successfully created.' }
+      if @solution.is_approved
+        render json: { message: 'Successfully created.' }
+      else
+        render json: { message: 'It will be shown to everyone after reviewed.' }
+      end
     else
       render json: { message: @solution.errors.full_messages }, status: 400
     end
@@ -34,11 +38,17 @@ class Api::SolutionsController < Api::BaseController
       render json: { message: 'You can only edit your own solution.' }, status: 400
       return
     end
-    unless current_user.member?
+    if current_user.member?
+      @solution.is_approved = false
+    else
       @solution.is_approved = true
     end
     if @solution.update(solution_params)
-      render json: { message: 'Successfully updated.' }
+      if @solution.is_approved
+        render json: { message: 'Successfully updated.' }
+      else
+        render json: { message: 'It will be shown to everyone after reviewed.' }
+      end
     else
       render json: { message: @solution.errors.full_messages }, status: 400
     end
