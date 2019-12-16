@@ -63,7 +63,7 @@ class Api::SolutionsController < Api::BaseController
   end
 
   def waiting_list
-    render json: { message: Solution.where(is_approved: false) }
+    render json: Solution.where(is_approved: false)
   end
 
   private

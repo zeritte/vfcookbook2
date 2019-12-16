@@ -6,7 +6,7 @@ class SolutionSerializer < ActiveModel::Serializer
   end
 
   def created_by
-    User.find(object.created_by_id).name
+    User.find(object.created_by_id).try(:name)
   end
 
   def created_at
