@@ -1,5 +1,5 @@
 class VfCaseListSerializer < ActiveModel::Serializer
-  attributes :id, :name, :domain, :impact, :type, :solution_num, :case_id
+  attributes :id, :name, :domain, :impact, :type, :solution_num, :case_id, :is_active
 
   def name
     object.try(:name)

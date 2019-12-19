@@ -4,7 +4,7 @@ class Api::VfCasesController < Api::BaseController
   before_action :set_current_user, only: [:create, :update]
 
   def index
-    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.where(is_active: true), serializer: VfCaseListSerializer)
+    render json: ActiveModel::Serializer::CollectionSerializer.new(VfCase.all, serializer: VfCaseListSerializer)
   end
 
   def show

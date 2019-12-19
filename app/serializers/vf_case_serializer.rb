@@ -1,5 +1,5 @@
 class VfCaseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :created_at, :domain, :impact, :case_class, :type, :documentation, :case_id, :is_active, :content_en, :content_de
+  attributes :id, :name, :created_at, :domain, :impact, :case_class, :type, :documentation, :case_id, :is_active, :content_en, :content_de, :domain_id, :impact_id, :tctype_id
   has_many :solutions
 
   def name
