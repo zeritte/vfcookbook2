@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :solutions
   resources :vf_cases
+  resources :impacts
+  resources :tctypes
+  resources :domains
   root to: 'vf_cases#index'
   namespace :api do
     resources :sessions, only: [:create]

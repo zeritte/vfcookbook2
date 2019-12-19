@@ -1,0 +1,27 @@
+<%= form_with(model: tctype, local: true) do |form| %>
+  <% if tctype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tctype.errors.count, "error") %> prohibited this tctype from being saved:</h2>
+
+      <ul>
+      <% tctype.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

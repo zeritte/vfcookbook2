@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tctypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tctypes.each do |tctype| %>
+      <tr>
+        <td><%= tctype.name %></td>
+        <td><%= tctype.description %></td>
+        <td><%= link_to 'Show', tctype %></td>
+        <td><%= link_to 'Edit', edit_tctype_path(tctype) %></td>
+        <td><%= link_to 'Destroy', tctype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tctype', new_tctype_path %>

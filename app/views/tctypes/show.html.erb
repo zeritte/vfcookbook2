@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tctype.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tctype.description %>
+</p>
+
+<%= link_to 'Edit', edit_tctype_path(@tctype) %> |
+<%= link_to 'Back', tctypes_path %>
