@@ -1,8 +1,7 @@
 class Api::SolutionsController < Api::BaseController
-  before_action :set_solution, only: [:show, :edit, :update, :destroy]
+  before_action :set_solution, only: [:show, :edit, :update, :destroy, :approve_solution]
   before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
-  before_action :set_current_user, only: [:index, :create, :update]
-
+  before_action :set_current_user, only: [:index, :create, :update, :waiting_list, :approve_solution]
   def index
     if current_user
       @solutions = Solution.all.where(is_approved: true).or(Solution.where(created_by_id: current_user.id))
@@ -63,7 +62,23 @@ class Api::SolutionsController < Api::BaseController
   end
 
   def waiting_list
-    render json: Solution.where(is_approved: false)
+    if current_user && ( current_user.admin? or current_user.editor? )
+      render json: Solution.where(is_approved: false)
+    else
+      render json: { message: 'Members can not see waiting solutions.' }, status: 400
+    end
+  end
+
+  def approve_solution
+    if current_user && ( current_user.admin? or current_user.editor? )
+      if @solution.update(is_approved: true)
+        render json: { message: 'Solution is successfully approved.' }
+      else
+        render json: { message: @solution.errors.full_messages }, status: 400
+      end
+    else
+      render json: { message: 'Members can not approve waiting solutions.' }, status: 400
+    end
   end
 
   private

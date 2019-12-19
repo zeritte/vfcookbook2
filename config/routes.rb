@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :impacts, only: [:index]
     resources :tctypes, only: [:index]
     get 'waiting_list', to: 'solutions#waiting_list'
+    get 'approve_solution/:id', to: 'solutions#approve_solution'
   end
 end
