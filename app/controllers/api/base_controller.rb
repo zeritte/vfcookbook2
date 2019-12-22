@@ -20,9 +20,12 @@ class Api::BaseController < ApplicationController
   end
 
   def check_if_admin?
-    unless @current_user.try(:role) == 'admin'
-      render json: { message: 'You must be an admin.' }, status: 401
-      return
+    authenticate_user!
+    if @current_user
+      unless @current_user.try(:role) == 'admin'
+        render json: { message: 'You must be an admin.' }, status: 401
+        return
+      end
     end
   end
 

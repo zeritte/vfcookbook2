@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :registrations, only: [:create]
     resources :solutions, only: [:index, :show, :create, :update, :destroy]
     resources :vf_cases, only: [:index, :show, :create, :update, :destroy]
-    resources :domains, only: [:index]
-    resources :impacts, only: [:index]
-    resources :tctypes, only: [:index]
+    resources :domains, only: [:index, :show, :create, :update, :destroy]
+    resources :impacts, only: [:index, :show, :create, :update, :destroy]
+    resources :tctypes, only: [:index, :show, :create, :update, :destroy]
     get 'waiting_list', to: 'solutions#waiting_list'
     get 'approve_solution/:id', to: 'solutions#approve_solution'
   end

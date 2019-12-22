@@ -1,6 +1,6 @@
 class Api::SolutionsController < Api::BaseController
   before_action :set_solution, only: [:show, :edit, :update, :destroy, :approve_solution]
-  before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_current_user, only: [:index, :create, :update, :waiting_list, :approve_solution]
   def index
     if current_user
