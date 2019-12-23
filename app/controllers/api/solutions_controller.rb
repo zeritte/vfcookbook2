@@ -65,7 +65,7 @@ class Api::SolutionsController < Api::BaseController
     if current_user && ( current_user.admin? or current_user.editor? )
       render json: Solution.where(is_approved: false)
     else
-      render json: { message: 'Members can not see waiting solutions.' }, status: 400
+      render json: { message: 'Only admins & editors can see waiting solutions.' }, status: 400
     end
   end
 
@@ -77,7 +77,7 @@ class Api::SolutionsController < Api::BaseController
         render json: { message: @solution.errors.full_messages }, status: 400
       end
     else
-      render json: { message: 'Members can not approve waiting solutions.' }, status: 400
+      render json: { message: 'Only admins & editors can approve waiting solutions.' }, status: 400
     end
   end
 
