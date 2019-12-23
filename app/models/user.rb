@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   acts_as_token_authenticatable
+  validates :name, length: { minimum: 3 }
   after_initialize :set_default_role, :if => :new_record?
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
