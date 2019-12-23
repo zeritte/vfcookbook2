@@ -6,14 +6,14 @@ class VfCaseListSerializer < ActiveModel::Serializer
   end
 
   def domain
-    object.domain.name
+    object.domain.try(:name)
   end
 
   def impact
-    object.impact.name
+    object.impact.try(:name)
   end
 
   def type
-    object.tctype.name
+    object.tctype.try(:name)
   end
 end

@@ -43,6 +43,6 @@ class Api::TctypesController < Api::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tctype_params
-      params.require(:tctype).permit(:name, :description)
+      params.require(:type).permit(:name, :description)
     end
 end
