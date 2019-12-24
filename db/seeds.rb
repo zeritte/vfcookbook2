@@ -10,15 +10,15 @@ User.create!(id: 1, name: "Admin", email: "admin@mercedes", role: "admin", passw
 
 Domain.create!([
   {id: 1, name: "Security", description: ""},
-  {name: "Compliance", description: ""},
-  {name: "Performance", description: ""},
-  {name: "Maintainability", description: ""},
-  {name: "Roboutsness", description: ""},
-  {name: "GRC", description: "Obsolete"},
-  {name: "Data Loss Prevention", description: ""},
-  {name: "SLIN", description: ""},
-  {name: "Naming Convention", description: ""},
-  {name: "Customer Test Case", description: ""}
+  {id: 2, name: "Compliance", description: ""},
+  {id: 3, name: "Performance", description: ""},
+  {id: 4, name: "Maintainability", description: ""},
+  {id: 5, name: "Roboutsness", description: ""},
+  {id: 6, name: "GRC", description: "Obsolete"},
+  {id: 7, name: "Data Loss Prevention", description: ""},
+  {id: 8, name: "SLIN", description: ""},
+  {id: 9, name: "Naming Convention", description: ""},
+  {id: 10, name: "Customer Test Case", description: ""}
 ])
 Impact.create!([
   {id: 1, name: "Info", description: ""},
